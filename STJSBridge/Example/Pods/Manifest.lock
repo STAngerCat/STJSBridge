@@ -1,0 +1,16 @@
+PODS:
+  - STJSBridge (0.1.0)
+
+DEPENDENCIES:
+  - STJSBridge (from `../`)
+
+EXTERNAL SOURCES:
+  STJSBridge:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  STJSBridge: af62b0d33ac4ec0d1fd32653613bc2ef9bc8b752
+
+PODFILE CHECKSUM: 153f91bccdd003f614e6c96ffabd5a7e18d0eb1c
+
+COCOAPODS: 1.5.0

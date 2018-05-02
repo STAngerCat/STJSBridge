@@ -1,0 +1,27 @@
+{
+  "name": "STJSBridge",
+  "version": "0.1.0",
+  "summary": "A short description of STJSBridge.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Duran/STJSBridge",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Duran": "i@maple.im"
+  },
+  "source": {
+    "git": "https://github.com/Duran/STJSBridge.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "STJSBridge/**/*.swift",
+  "resource_bundles": {
+    "STJSBridge": [
+      "STJSBridge/Assets/STJSBridge.js"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+framework module STJSBridge {
+  umbrella header "STJSBridge-umbrella.h"
+
+  export *
+  module * { export * }
+}

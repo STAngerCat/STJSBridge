@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'STJSBridge_Example' do
+  pod 'STJSBridge', :path => '../'
+
+  target 'STJSBridge_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
