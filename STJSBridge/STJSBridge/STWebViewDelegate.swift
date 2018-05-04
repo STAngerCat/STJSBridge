@@ -50,9 +50,8 @@ class STWebViewDelegate : NSObject {
     
     
     func injectJS() -> String? {
-        if let bundlePath = Bundle.init(for: STWebViewDelegate.self).path(forResource: "STJSBridge", ofType: "bundle"),
-            let bundle = Bundle.init(path: bundlePath),
-            let filePath = bundle.path(forResource: "STJSBridge", ofType: "js"),
+        
+        if let filePath = Bundle.init(for: STWebViewDelegate.self).path(forResource: "STJSBridge", ofType: "js"),
             let jsString = try? String(contentsOfFile: filePath, encoding: .utf8){
             return jsString;
         }

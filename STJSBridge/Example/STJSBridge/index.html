@@ -5,9 +5,15 @@
 	<title>Document</title>
 </head>
 <body>
-	ssss
+	
 </body>
 <script type="text/javascript">
-	console.log(STJSBridge)
+    window.addEventListener("JSBridgeReady",()=>{
+        STJSBridge.addEventListener("aloha",(content,callback)=>{
+            document.body.innerHTML += content;
+            callback("current html"+document.body.innerHTML);
+        });
+    })
+    
 </script>
 </html>

@@ -34,25 +34,32 @@ class ViewController: UIViewController {
         }
         
         
-        jsbridge?.addEventHandler(name: "hello", handler: { (content, callback) in
-            print("i hear params:\(String(describing: content))")
-            callback?("i hear your hello params:\(String(describing: content))")
-
-            self.jsbridge?.sendMessage(name: "aloha", content: "no message", then: { (callbackContent) in
-                print("\(String(describing: callbackContent))")
-            })
+        jsbridge?.addEventHandler(name: "show", handler: { (content, callback) in
+            
         })
         
         jsbridge?.sendMessage(name: "aloha",content: "Form Client Message", then: { (content) in
             print("formWebCallBackMessage:\(String(describing: content))")
         })
+        
+        
+        let button = UIButton(type: .contactAdd);
+        view.addSubview(button);
+        
+        button.addTarget(self, action: #selector(buttonClick), for: .touchUpInside);
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    @objc func buttonClick(){
+        jsbridge?.sendMessage(name: "aloha",content: "Form Client Message", then: { (content) in
+            print("formWebCallBackMessage:\(String(describing: content))")
+        })
+    }
 }
 
 

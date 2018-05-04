@@ -1,14 +1,22 @@
+/**
+ * @file JSBridge 
+ * @author Duran<yinheng01@baidu.com> 
+ */
+
 namespace STJSBridge {
+
 	/**
 	 * 普通回调
+	 * 
 	 * @type {any} 可选回调参数
 	 */
 	export type BaseCallBack = (content?:any)=>void;
 
 	/**
 	 * 带参数和回调的回调
-	 * @type {any} 回调参数
-	 * @type {BaseCallBack} 针对回调消息本身的普通回调
+	 * 
+	 * @type {any} content 回调参数
+	 * @type {BaseCallBack} complete 针对回调消息本身的普通回调
 	 */
 	export type MessageCallBack = (content?:any,complete?:BaseCallBack)=>void;
 
@@ -18,21 +26,25 @@ namespace STJSBridge {
 	class STMessage {
 		/**
 		 * 消息发送 ID
+		 * 
 		 * @type {number}
 		 */
 		requestId:number = 0;
 		/**
 		 * 返回消息 ID
+		 * 
 		 * @type {number}
 		 */
 		responseId?:number;
 		/**
 		 * 消息名
+		 * 
 		 * @type {string}
 		 */
 		name?:string;
 		/**
 		 * 消息所带内容
+		 * 
 		 * @type {any}
 		 */
 		content?:any;
@@ -48,11 +60,12 @@ namespace STJSBridge {
 
 		/**
 		 * 返回序列化的数据
+		 * 
 		 * @return {string}
 		 */
-		JSONString():string {
+		jsonString():string {
 			let dic:{[key:string]:any} = {};
-			dic["requestId"] = this.requestId;
+			dic['requestId'] = this.requestId;
 			if (this.responseId) {
 				dic['responseId'] = this.responseId;
 			}
@@ -69,6 +82,7 @@ namespace STJSBridge {
 
 	/**
 	 * 对消息处理
+	 * 
 	 */
 	class STMessageMananger {
 
@@ -102,13 +116,13 @@ namespace STJSBridge {
 					delete this.callBackList[message.responseId];
 				}
 			} else if (name in this.eventMap) {
-				this.eventMap[name].forEach((item)=>{
-					item(message.content,(content)=>{
+				this.eventMap[name].forEach( item =>{
+					item(message.content, content =>{
 						this.responseToMessage(message,content);
 					});
 				})
 			} else if (this.noneNameEventHandler) {
-				this.noneNameEventHandler(message.content,(content)=>{
+				this.noneNameEventHandler(message.content, content =>{
 					this.responseToMessage(message,content);
 				})
 			}
@@ -135,11 +149,11 @@ namespace STJSBridge {
 		}
 
 		private sendMessage(message:STMessage) {
-			let data = message.JSONString()
-			if (window["__inject__web__message__send__"]) {
-				window["__inject__web__message__send__"](data)
-			} else if (window['webkit'] && window['webkit'].messageHandlers[window["__inject__web__message__send__key__"]]) {
-				window['webkit'].messageHandlers[window["__inject__web__message__send__key__"]].postMessage(data);
+			let data = message.jsonString()
+			if (window['__inject__web__message__send__']) {
+				window['__inject__web__message__send__'](data)
+			} else if (window['webkit'] && window['webkit'].messageHandlers[window['__inject__web__message__send__key__']]) {
+				window['webkit'].messageHandlers[window['__inject__web__message__send__key__']].postMessage(data);
 			} else {
 				console.warn('Client has no Message Handler')
 			}
@@ -148,27 +162,32 @@ namespace STJSBridge {
 
 
 	const messageManager = new STMessageMananger();
+
 	/**
-	 * @param {string} 消息名字
-	 * @param {any} 附带参数
-	 * @param {BaseCallBack} 处理了来自客户端的回调
+	 * 向客户端发送消息
+	 * 
+	 * @param {string} name 消息名字
+	 * @param {any} content 附带参数
+	 * @param {BaseCallBack} complete 处理了来自客户端的回调
 	 */
 	export function sendMessage(name:string, content:any, complete:BaseCallBack):void {
 		messageManager.formWebToClient(name,content,complete);
 	}
 
 	/**
-	 * @param {string} 监听的消息名
-	 * @param {MessageCallBack} 处理消息
+	 * 监听来自客户端的消息
+	 * 
+	 * @param {string} name 监听的消息名
+	 * @param {MessageCallBack} handler 处理消息
 	 */
 	export function addEventListener(name:string ,handler:MessageCallBack):void {
 		messageManager.addEventListener(handler,name);			
 	}
 
 
-	window["__inject__native_message__send__"] = (data)=>{
+	window['__inject__native_message__send__'] = data => {
 		messageManager.formClientToWeb(data)
 	};
 
-	window.dispatchEvent(new Event("JSBridgeReady"));
+	window.dispatchEvent(new Event('JSBridgeReady'));
 }
