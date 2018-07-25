@@ -1,16 +1,12 @@
-/**
- * @file JSBridge
- * @author Duran<yinheng01@baidu.com>
- */
-let STJSBridge;
+// JSBridge
+var STJSBridge;
 (function (STJSBridge) {
-
+    const __inject__web__message__send__key__ = "###replace_message_key###"; // 客户端会替换这里的值
     /**
      * 消息模型
      */
     class STMessage {
         constructor(data) {
-
             /**
              * 消息发送 ID
              *
@@ -18,37 +14,36 @@ let STJSBridge;
              */
             this.requestId = 0;
             if (data) {
-                this.responseId = data.responseId;
-                this.name = data.name;
-                this.content = data.content;
-                this.requestId = data.requestId;
+                this.responseId = data['responseId'];
+                this.name = data['name'];
+                this.content = data['content'];
+                this.requestId = data['requestId'];
+                this.error = data['error'];
             }
         }
-
         /**
          * 返回序列化的数据
          *
-         * @return {string}
+         * @return {object}
          */
-        jsonString() {
+        json() {
             let dic = {};
-            dic.requestId = this.requestId;
+            dic['requestId'] = this.requestId;
             if (this.responseId) {
-                dic.responseId = this.responseId;
+                dic['responseId'] = this.responseId;
             }
-
             if (this.name) {
-                dic.name = this.name;
+                dic['name'] = this.name;
             }
-
             if (this.content) {
-                dic.content = this.content;
+                dic['content'] = this.content;
             }
-
-            return JSON.stringify(dic);
+            if (this.error) {
+                dic['error'] = this.error;
+            }
+            return dic;
         }
     }
-
     /**
      * 对消息处理
      *
@@ -56,8 +51,7 @@ let STJSBridge;
     class STMessageMananger {
         constructor() {
             this.eventMap = {};
-            this.noneNameEventHandler = () => {
-            };
+            this.noneNameEventHandler = () => { };
             this.callBackList = {};
             this.requestId = 0;
         }
@@ -69,7 +63,6 @@ let STJSBridge;
             if (complete) {
                 this.callBackList[message.requestId] = complete;
             }
-
             this.sendMessage(message);
         }
         formClientToWeb(data) {
@@ -78,20 +71,20 @@ let STJSBridge;
             if (message.responseId) {
                 if (message.responseId in this.callBackList) {
                     let callback = this.callBackList[message.responseId];
-                    callback(message.content);
+                    callback(message.content, message.error);
                     delete this.callBackList[message.responseId];
                 }
             }
             else if (name in this.eventMap) {
                 this.eventMap[name].forEach(item => {
-                    item(message.content, content => {
-                        this.responseToMessage(message, content);
+                    item(message.content, (content, error) => {
+                        this.responseToMessage(message.requestId, content, error);
                     });
                 });
             }
             else if (this.noneNameEventHandler) {
-                this.noneNameEventHandler(message.content, content => {
-                    this.responseToMessage(message, content);
+                this.noneNameEventHandler(message.content, (content, error) => {
+                    this.responseToMessage(message.requestId, content, error);
                 });
             }
         }
@@ -108,19 +101,22 @@ let STJSBridge;
                 this.noneNameEventHandler = handler;
             }
         }
-        responseToMessage(message, content) {
+        removeEventListener(name) {
+            if (name in this.eventMap) {
+                delete this.eventMap[name];
+            }
+        }
+        responseToMessage(messageId, content, error) {
             let responseMessage = new STMessage();
-            responseMessage.responseId = message.requestId;
+            responseMessage.responseId = messageId;
             responseMessage.content = content;
+            responseMessage.error = error;
             this.sendMessage(responseMessage);
         }
         sendMessage(message) {
-            let data = message.jsonString();
-            if (window['__inject__web__message__send__']) {
-                window['__inject__web__message__send__'](data);
-            }
-            else if (window.webkit && window.webkit.messageHandlers[window['__inject__web__message__send__key__']]) {
-                window.webkit.messageHandlers[window['__inject__web__message__send__key__']].postMessage(data);
+            let data = message.json();
+            if (window['webkit'] && window['webkit'].messageHandlers[__inject__web__message__send__key__]) {
+                window['webkit'].messageHandlers[__inject__web__message__send__key__].postMessage(data);
             }
             else {
                 console.warn('Client has no Message Handler');
@@ -128,19 +124,25 @@ let STJSBridge;
         }
     }
     const messageManager = new STMessageMananger();
-
-    /**
-     * 向客户端发送消息
-     *
-     * @param {string} name 消息名字
-     * @param {any} content 附带参数
-     * @param {BaseCallBack} complete 处理了来自客户端的回调
-     */
-    function sendMessage(name, content, complete) {
+    function sendMessage() {
+        let name = arguments[0];
+        if (typeof name != "string") {
+            throw "`name` should be string";
+        }
+        let content = undefined;
+        let complete = undefined;
+        if (typeof arguments[1] == 'function') {
+            complete = arguments[1];
+        }
+        else {
+            content = arguments[1];
+        }
+        if (typeof arguments[2] == 'function') {
+            complete = arguments[2];
+        }
         messageManager.formWebToClient(name, content, complete);
     }
     STJSBridge.sendMessage = sendMessage;
-
     /**
      * 监听来自客户端的消息
      *
@@ -151,8 +153,15 @@ let STJSBridge;
         messageManager.addEventListener(handler, name);
     }
     STJSBridge.addEventListener = addEventListener;
+    /**
+     * 移除对客户端的消息监听
+     * @param {string} name 监听的消息名
+     */
+    function removeEventListener(name) {
+        messageManager.removeEventListener(name);
+    }
+    STJSBridge.removeEventListener = removeEventListener;
     window['__inject__native_message__send__'] = data => {
         messageManager.formClientToWeb(data);
     };
-    window.dispatchEvent(new Event('JSBridgeReady'));
 })(STJSBridge || (STJSBridge = {}));

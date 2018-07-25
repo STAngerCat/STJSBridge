@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02C648DA66DF887C36CFBDBDE243FBBE /* STJSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4761F2883ABA1AEE3D347B97BC2F71 /* STJSBridge.swift */; };
-		07074246488A42F034726A13AFE4350E /* STWebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEEE3AD1CC94BED6EB0F9BD2826D98 /* STWebViewDelegate.swift */; };
-		299791D6A87D133E6237AD609FDAC0DC /* STJSBridge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A6D7EACC54D312391C756C67C464A3 /* STJSBridge-dummy.m */; };
 		4037AACA59827684DDC92C4DBC2B71E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		468A516F1C5875EBCB09BB9270618647 /* STJSBridge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5298ADCF0F0CD761DDA917FF7D60FE /* STJSBridge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		468A516F1C5875EBCB09BB9270618647 /* STJSBridge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6C5EBC90F5D5E6348AFF259A1841D3F /* STJSBridge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		594DFCDC31177EC30812945C87A2AC48 /* STJSBridge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2409B03424FAD9A2C0558A78BD6464C9 /* STJSBridge-dummy.m */; };
 		5E0B30B31A7C5E742265FB09A6EB8DAF /* Pods-STJSBridge_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A4A62180E0EAB442C1EFC452CF9CA /* Pods-STJSBridge_Example-dummy.m */; };
+		5E5860E07C064B92845C0C18D45B4A16 /* STJSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EC14A2E24FD25BE27E4F3080B6716 /* STJSBridge.swift */; };
 		60AB0C02800AEC4E868DCD0B322CCD51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		6BE654850524CD4F52FE2E8405485207 /* STJSBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = A7F87558ECD592BA0824A63328ECEBF1 /* STJSBridge.js */; };
 		71B982F26B8B0D68F050C28E0A69A8F0 /* Pods-STJSBridge_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F827A618E3AF5A8105CEFF67E115E9 /* Pods-STJSBridge_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71C29EEF8EB01CEC95232D78BEAC8CF5 /* STMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4229F2347C650F76F2A2D34424481B5F /* STMessage.swift */; };
 		796682DC77B9B6698CE10AC724216B46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		7E54C992F811FD1AFBB569FDBE26969E /* STMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F0CC15BC8D0017A65E9C01BEB0707 /* STMessageManager.swift */; };
 		88BB2C03366EDDD9D1DF4643CEA98954 /* Pods-STJSBridge_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 073A1248563B56C653623DA4C7CBE453 /* Pods-STJSBridge_Tests-dummy.m */; };
 		91A3450F6802D7FD0DE75918464BF8D2 /* STJSBridge.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4FCA71CCB90C5BF12AAC3DAACBF9C9F2 /* STJSBridge.bundle */; };
-		9355112D1468CF4155439AFA6E7E3531 /* STMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F92983ADA3AC1B8BD183A43E9C83C /* STMessage.swift */; };
-		B87D3138AEEA3128A7C2A3723D7FE8C4 /* STMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A3004A9882C332441E5A9DEE045193 /* STMessageManager.swift */; };
+		BEEBA8CC21085EA500057929 /* STJSBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = BEEBA8CB21085EA500057929 /* STJSBridge.js */; };
 		C1365119A654A2D3AB089610E2F0347D /* Pods-STJSBridge_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AEB18FC5021C01E3D083E7F9BEAC47F2 /* Pods-STJSBridge_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1F15C8327D017D8979D3C5FC9D438EF /* STWebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743EF550BEAC380C3CA0DC80C368390 /* STWebViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,45 +51,45 @@
 /* Begin PBXFileReference section */
 		073A1248563B56C653623DA4C7CBE453 /* Pods-STJSBridge_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-STJSBridge_Tests-dummy.m"; sourceTree = "<group>"; };
 		1401528A20F147F07BD7E7290A967D22 /* Pods-STJSBridge_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STJSBridge_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		22396587FF1ECB4B7A9C705D0E30179F /* STJSBridge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = STJSBridge.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2409B03424FAD9A2C0558A78BD6464C9 /* STJSBridge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "STJSBridge-dummy.m"; sourceTree = "<group>"; };
+		290EC14A2E24FD25BE27E4F3080B6716 /* STJSBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STJSBridge.swift; path = STJSBridge/STJSBridge.swift; sourceTree = "<group>"; };
 		306A4A62180E0EAB442C1EFC452CF9CA /* Pods-STJSBridge_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-STJSBridge_Example-dummy.m"; sourceTree = "<group>"; };
+		3B0F6B5A568A148E882E4143CE0CDEB9 /* ResourceBundle-STJSBridge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-STJSBridge-Info.plist"; sourceTree = "<group>"; };
+		4229F2347C650F76F2A2D34424481B5F /* STMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STMessage.swift; path = STJSBridge/STMessage.swift; sourceTree = "<group>"; };
 		457D289361A535F48591AA9DBA0D84E2 /* Pods-STJSBridge_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-STJSBridge_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		48A6D7EACC54D312391C756C67C464A3 /* STJSBridge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "STJSBridge-dummy.m"; sourceTree = "<group>"; };
+		48A2EC96535DD8776781B858930BA664 /* STJSBridge.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STJSBridge.xcconfig; sourceTree = "<group>"; };
 		4FCA71CCB90C5BF12AAC3DAACBF9C9F2 /* STJSBridge.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STJSBridge.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		520CA14776A42DAE16FF7EFDDA087707 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		534EFA53E3A8B119316405112F28F0D6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		57FC027EC879FD5A9F75278701608199 /* STJSBridge.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STJSBridge.xcconfig; sourceTree = "<group>"; };
+		5743EF550BEAC380C3CA0DC80C368390 /* STWebViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STWebViewDelegate.swift; path = STJSBridge/STWebViewDelegate.swift; sourceTree = "<group>"; };
 		5C2B014F1D01B21135F0981E8761C2CB /* Pods-STJSBridge_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-STJSBridge_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		5C7F0CC15BC8D0017A65E9C01BEB0707 /* STMessageManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STMessageManager.swift; path = STJSBridge/STMessageManager.swift; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		76B4277F6C517E9A6B604E663205CC60 /* Pods-STJSBridge_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-STJSBridge_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		799E88C5B73C02B7C71CE7612F89CB3D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A6DC09B3AF307DCCDC15B023658AEE6 /* Pods-STJSBridge_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STJSBridge_Example.release.xcconfig"; sourceTree = "<group>"; };
 		885B0A3CCFBB357A7FE91AF7EEEAA641 /* Pods-STJSBridge_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-STJSBridge_Tests-resources.sh"; sourceTree = "<group>"; };
 		896137BC93B7452F32FB3C156C4CE943 /* Pods_STJSBridge_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STJSBridge_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		896F92983ADA3AC1B8BD183A43E9C83C /* STMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STMessage.swift; path = STJSBridge/STMessage.swift; sourceTree = "<group>"; };
-		8CCA8F1311B74BAF6E23EEBAB0810E26 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8DB3343110CAE3EC33F8AA0CA4046F31 /* STJSBridge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STJSBridge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		95CEEE3AD1CC94BED6EB0F9BD2826D98 /* STWebViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STWebViewDelegate.swift; path = STJSBridge/STWebViewDelegate.swift; sourceTree = "<group>"; };
 		A123D4B10D28CD8D084F15EAAE760FBE /* Pods-STJSBridge_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STJSBridge_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A7F87558ECD592BA0824A63328ECEBF1 /* STJSBridge.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = STJSBridge.js; path = STJSBridge/Assets/STJSBridge.js; sourceTree = "<group>"; };
 		ABF5350CAAE1FCEA243E2C3762D3044D /* Pods-STJSBridge_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-STJSBridge_Example.modulemap"; sourceTree = "<group>"; };
 		AEB18FC5021C01E3D083E7F9BEAC47F2 /* Pods-STJSBridge_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-STJSBridge_Example-umbrella.h"; sourceTree = "<group>"; };
+		B3B6E78DF803B790B8A1E562A87B66C1 /* STJSBridge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STJSBridge-prefix.pch"; sourceTree = "<group>"; };
 		B9207BC9F921375D2B9E1E014586982F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB5298ADCF0F0CD761DDA917FF7D60FE /* STJSBridge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STJSBridge-umbrella.h"; sourceTree = "<group>"; };
+		BEEBA8CB21085EA500057929 /* STJSBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = STJSBridge.js; sourceTree = "<group>"; };
 		C0D7EA5412146DE96255E46B9BDE72CB /* Pods-STJSBridge_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-STJSBridge_Example-resources.sh"; sourceTree = "<group>"; };
+		C2D0353A59A5006F9F6EDEFC42ED9CD8 /* STJSBridge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = STJSBridge.modulemap; sourceTree = "<group>"; };
 		C4D2A65DB7EA8404D4C375C2FE8A6FE2 /* Pods-STJSBridge_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-STJSBridge_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		C6C5EBC90F5D5E6348AFF259A1841D3F /* STJSBridge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STJSBridge-umbrella.h"; sourceTree = "<group>"; };
+		C8B69B90B943F2FDD11817823F35A377 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C9E95DF55E07819C836F810128384847 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA3616454DFA5A01A3FC8FFD7C98BA0E /* Pods_STJSBridge_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STJSBridge_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE4761F2883ABA1AEE3D347B97BC2F71 /* STJSBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STJSBridge.swift; path = STJSBridge/STJSBridge.swift; sourceTree = "<group>"; };
 		D38305D6BCA9775EB7E8708C8547F1A5 /* Pods-STJSBridge_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-STJSBridge_Example-frameworks.sh"; sourceTree = "<group>"; };
 		D8E39C9E4EA7AC18AFA08F1EAF22CCA5 /* Pods-STJSBridge_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-STJSBridge_Tests.modulemap"; sourceTree = "<group>"; };
 		E5277A270424FA78D9041E737BCBFF30 /* Pods-STJSBridge_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-STJSBridge_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E53083A4471260DF5056F220EB847C8E /* ResourceBundle-STJSBridge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-STJSBridge-Info.plist"; sourceTree = "<group>"; };
 		E7F827A618E3AF5A8105CEFF67E115E9 /* Pods-STJSBridge_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-STJSBridge_Tests-umbrella.h"; sourceTree = "<group>"; };
-		F34F339CD5B291AEB6945809F2D01D0B /* STJSBridge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = STJSBridge.modulemap; sourceTree = "<group>"; };
 		F5C448F62FF6B04BD383822197E1714D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F65F93E82940340881BCDA9279CEC992 /* Pods-STJSBridge_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STJSBridge_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F67339080FE4DA0DED07A56BD05790FA /* STJSBridge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STJSBridge-prefix.pch"; sourceTree = "<group>"; };
-		F7A3004A9882C332441E5A9DEE045193 /* STMessageManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = STMessageManager.swift; path = STJSBridge/STMessageManager.swift; sourceTree = "<group>"; };
+		FB635FD97A95DCA9D05DB8D3F3FC7FD5 /* STJSBridge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = STJSBridge.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,29 +138,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		31646EF3AC80CFCCE636D19EB87DD199 /* Pod */ = {
+		10C2A9FADCE7BE90862AB22FDEBF2D23 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				8CCA8F1311B74BAF6E23EEBAB0810E26 /* LICENSE */,
-				534EFA53E3A8B119316405112F28F0D6 /* README.md */,
-				22396587FF1ECB4B7A9C705D0E30179F /* STJSBridge.podspec */,
+				C8B69B90B943F2FDD11817823F35A377 /* LICENSE */,
+				C9E95DF55E07819C836F810128384847 /* README.md */,
+				FB635FD97A95DCA9D05DB8D3F3FC7FD5 /* STJSBridge.podspec */,
 			);
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		3E638953D9C1FC06A87BA2085E6BF89C /* Support Files */ = {
+		687BF005A09B0DA24F7CEF4C78050F32 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				520CA14776A42DAE16FF7EFDDA087707 /* Info.plist */,
-				E53083A4471260DF5056F220EB847C8E /* ResourceBundle-STJSBridge-Info.plist */,
-				F34F339CD5B291AEB6945809F2D01D0B /* STJSBridge.modulemap */,
-				57FC027EC879FD5A9F75278701608199 /* STJSBridge.xcconfig */,
-				48A6D7EACC54D312391C756C67C464A3 /* STJSBridge-dummy.m */,
-				F67339080FE4DA0DED07A56BD05790FA /* STJSBridge-prefix.pch */,
-				BB5298ADCF0F0CD761DDA917FF7D60FE /* STJSBridge-umbrella.h */,
+				DCECC29BE8E1111244B7D3B48CE53224 /* STJSBridge */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/STJSBridge";
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		6D2EE5BD61F807302508AF07F0994C6E /* Targets Support Files */ = {
@@ -176,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				FF5E2C81E42136756F13B6EE05274952 /* Development Pods */,
+				687BF005A09B0DA24F7CEF4C78050F32 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				0354AB6ADEA2D3C058FF0FF917916F5B /* Products */,
 				6D2EE5BD61F807302508AF07F0994C6E /* Targets Support Files */,
@@ -201,19 +194,19 @@
 			path = "Target Support Files/Pods-STJSBridge_Example";
 			sourceTree = "<group>";
 		};
-		9607133CA0A86CC368CA03E3F849C4F1 /* STJSBridge */ = {
+		93EC0B085FBE42866CF0556AD7398635 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CE4761F2883ABA1AEE3D347B97BC2F71 /* STJSBridge.swift */,
-				896F92983ADA3AC1B8BD183A43E9C83C /* STMessage.swift */,
-				F7A3004A9882C332441E5A9DEE045193 /* STMessageManager.swift */,
-				95CEEE3AD1CC94BED6EB0F9BD2826D98 /* STWebViewDelegate.swift */,
-				31646EF3AC80CFCCE636D19EB87DD199 /* Pod */,
-				D7C01F2173EC80428DF4B1729A26B519 /* Resources */,
-				3E638953D9C1FC06A87BA2085E6BF89C /* Support Files */,
+				799E88C5B73C02B7C71CE7612F89CB3D /* Info.plist */,
+				3B0F6B5A568A148E882E4143CE0CDEB9 /* ResourceBundle-STJSBridge-Info.plist */,
+				C2D0353A59A5006F9F6EDEFC42ED9CD8 /* STJSBridge.modulemap */,
+				48A2EC96535DD8776781B858930BA664 /* STJSBridge.xcconfig */,
+				2409B03424FAD9A2C0558A78BD6464C9 /* STJSBridge-dummy.m */,
+				B3B6E78DF803B790B8A1E562A87B66C1 /* STJSBridge-prefix.pch */,
+				C6C5EBC90F5D5E6348AFF259A1841D3F /* STJSBridge-umbrella.h */,
 			);
-			name = STJSBridge;
-			path = ../..;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/STJSBridge";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -224,6 +217,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE886B32974DA86C9E8A9A88FA6CE14B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BEEBA8CB21085EA500057929 /* STJSBridge.js */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,12 +233,19 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		D7C01F2173EC80428DF4B1729A26B519 /* Resources */ = {
+		DCECC29BE8E1111244B7D3B48CE53224 /* STJSBridge */ = {
 			isa = PBXGroup;
 			children = (
-				A7F87558ECD592BA0824A63328ECEBF1 /* STJSBridge.js */,
+				290EC14A2E24FD25BE27E4F3080B6716 /* STJSBridge.swift */,
+				4229F2347C650F76F2A2D34424481B5F /* STMessage.swift */,
+				5C7F0CC15BC8D0017A65E9C01BEB0707 /* STMessageManager.swift */,
+				5743EF550BEAC380C3CA0DC80C368390 /* STWebViewDelegate.swift */,
+				10C2A9FADCE7BE90862AB22FDEBF2D23 /* Pod */,
+				CE886B32974DA86C9E8A9A88FA6CE14B /* Resources */,
+				93EC0B085FBE42866CF0556AD7398635 /* Support Files */,
 			);
-			name = Resources;
+			name = STJSBridge;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		FCD83D7525929059D2985A9C633618F1 /* Pods-STJSBridge_Tests */ = {
@@ -256,14 +264,6 @@
 			);
 			name = "Pods-STJSBridge_Tests";
 			path = "Target Support Files/Pods-STJSBridge_Tests";
-			sourceTree = "<group>";
-		};
-		FF5E2C81E42136756F13B6EE05274952 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9607133CA0A86CC368CA03E3F849C4F1 /* STJSBridge */,
-			);
-			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,7 +336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 911EC53A1C8A8E0DDBAD77894E8B01A3 /* Build configuration list for PBXNativeTarget "STJSBridge" */;
 			buildPhases = (
-				4C58560F9E0BA73465FC6B9FDCD881DF /* Sources */,
+				55BE4B666BC5D6A24CD5011417C54B82 /* Sources */,
 				9CCCE9625DBFD90CC0276C2BD9F8CDCB /* Frameworks */,
 				584CCFE2C6B916653C70258B41BD70D6 /* Resources */,
 				134F10CFB83713AEB6665763503AD434 /* Headers */,
@@ -403,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91A3450F6802D7FD0DE75918464BF8D2 /* STJSBridge.bundle in Resources */,
+				BEEBA8CC21085EA500057929 /* STJSBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +411,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BE654850524CD4F52FE2E8405485207 /* STJSBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,15 +425,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C58560F9E0BA73465FC6B9FDCD881DF /* Sources */ = {
+		55BE4B666BC5D6A24CD5011417C54B82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				299791D6A87D133E6237AD609FDAC0DC /* STJSBridge-dummy.m in Sources */,
-				02C648DA66DF887C36CFBDBDE243FBBE /* STJSBridge.swift in Sources */,
-				9355112D1468CF4155439AFA6E7E3531 /* STMessage.swift in Sources */,
-				B87D3138AEEA3128A7C2A3723D7FE8C4 /* STMessageManager.swift in Sources */,
-				07074246488A42F034726A13AFE4350E /* STWebViewDelegate.swift in Sources */,
+				594DFCDC31177EC30812945C87A2AC48 /* STJSBridge-dummy.m in Sources */,
+				5E5860E07C064B92845C0C18D45B4A16 /* STJSBridge.swift in Sources */,
+				71C29EEF8EB01CEC95232D78BEAC8CF5 /* STMessage.swift in Sources */,
+				7E54C992F811FD1AFBB569FDBE26969E /* STMessageManager.swift in Sources */,
+				D1F15C8327D017D8979D3C5FC9D438EF /* STWebViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +478,7 @@
 /* Begin XCBuildConfiguration section */
 		1FA812524E5C4F721DA3F444DD1555DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57FC027EC879FD5A9F75278701608199 /* STJSBridge.xcconfig */;
+			baseConfigurationReference = 48A2EC96535DD8776781B858930BA664 /* STJSBridge.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -545,7 +545,7 @@
 		};
 		3C903CA2F793AB78C604D95190160F19 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57FC027EC879FD5A9F75278701608199 /* STJSBridge.xcconfig */;
+			baseConfigurationReference = 48A2EC96535DD8776781B858930BA664 /* STJSBridge.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -612,7 +612,7 @@
 		};
 		776C9DE888B66C1F3320520CBFDB6E0F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57FC027EC879FD5A9F75278701608199 /* STJSBridge.xcconfig */;
+			baseConfigurationReference = 48A2EC96535DD8776781B858930BA664 /* STJSBridge.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/STJSBridge";
@@ -628,7 +628,7 @@
 		};
 		796CFE0146635B52B9B8E32E5995FA83 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57FC027EC879FD5A9F75278701608199 /* STJSBridge.xcconfig */;
+			baseConfigurationReference = 48A2EC96535DD8776781B858930BA664 /* STJSBridge.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/STJSBridge";

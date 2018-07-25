@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @file JSBridge 
  * @author Duran<yinheng01@baidu.com> 
@@ -191,3 +192,4 @@ namespace STJSBridge {
 
 	window.dispatchEvent(new Event('JSBridgeReady'));
 }
+/* eslint-disable */

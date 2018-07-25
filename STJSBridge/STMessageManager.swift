@@ -4,62 +4,54 @@
 //
 //  消息处理
 //
-//  Created by Duran on 2018/4/26.
-//  Copyright © 2018年 Maple.im. All rights reserved.
+//  Created by Maple Yin on 04/23/2018.
+//  Copyright (c) 2018 Duran. All rights reserved.
 //
 
 import Foundation
 import WebKit
-import JavaScriptCore
 
-let kJSContextKeyPath = "documentView.webView.mainFrame.javaScriptContext"
-let kScriptMessageHandlerName = "kScriptMessageHandlerName"
 let kWebMessageSendFuncKey = "window.__inject__native_message__send__"
 
-public typealias BaseCallBack = (Any?)->Void
-public typealias MessageCallBack = (Any?,BaseCallBack?)->Void
+public typealias BaseCallBack = (Any?, STError?) -> Void
+public typealias MessageCallBack = (Any?, BaseCallBack?) -> Void
 
-class STMessageManager:NSObject {
+class STMessageManager : NSObject {
     
-    weak var uiwebView:UIWebView?
-    weak var wkwebview:WKWebView?
-    var jsContext:JSContext?
+    weak var wkwebview: WKWebView?
     
     
     /// 对 webview 的统一处理
-    var delegate:STWebViewDelegate
+    var delegate: STWebViewDelegate
     
     
     /// 监听的消息列表
-    var eventList:[String:[MessageCallBack]] = [:]
+    var eventList: [String : [MessageCallBack]] = [:]
     
-    var callBackList:[Int:BaseCallBack] = [:];
+    var callBackList: [Int : BaseCallBack] = [:];
     
     /// 对于没有特定名字的监听
-    var noneNameEventHandler:MessageCallBack?
+    var noneNameEventHandler: MessageCallBack?
     
     
     /// 消息 id
     var requestId = 0
     
-    init(with webview:UIWebView, delegate:UIWebViewDelegate) {
-        self.delegate = STWebViewDelegate(delegate: delegate)
-        super.init()
-        self.uiwebView = webview
-        self.uiwebView?.delegate = self.delegate
-        self.jsContext = webview.value(forKeyPath: kJSContextKeyPath) as? JSContext
-        
-        self.delegate.bindEventHandler(handler: fromWebToClient)
-        
-    }
-    
-    init(with webview:WKWebView, delegate:WKNavigationDelegate) {
+    init(with webview: WKWebView, delegate: WKNavigationDelegate) {
         self.delegate = STWebViewDelegate(delegate: delegate)
         super.init()
         self.wkwebview = webview
         self.wkwebview?.navigationDelegate = self.delegate
         
-        self.delegate.bindEventHandler(handler: fromWebToClient)
+        self.delegate.bindEventHandler { [weak self] (info) in
+            self?.fromWebToClient(info: info)
+        }
+        self.injectJSForWKWebView()
+    }
+    
+    deinit {
+        let handlerName = self.delegate.scriptMessageHandlerName ?? ""
+        self.wkwebview?.configuration.userContentController.removeScriptMessageHandler(forName: handlerName)
     }
     
     
@@ -69,7 +61,7 @@ class STMessageManager:NSObject {
     ///   - name: 事件名
     ///   - content: 内容
     ///   - then: 回调
-    func fromClientToWeb(name:String, content:Any?, then: BaseCallBack?) {
+    func fromClientToWeb(name: String, content: Any?, then: BaseCallBack?) {
         requestId = requestId + 1
         let message = STMessage()
         message.name = name
@@ -77,7 +69,7 @@ class STMessageManager:NSObject {
         message.content = content
         
         if let then = then {
-            callBackList[requestId] = then;
+            callBackList[requestId] = then
         }
         sendMessage(message: message)
     }
@@ -86,26 +78,26 @@ class STMessageManager:NSObject {
     /// 来自 Web 端的消息
     ///
     /// - Parameter data: 消息字典
-    func fromWebToClient(data:Data) {
-        if let dataDic = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] {
-            let message = STMessage(data: dataDic)
-            if let responseId = message.responseId,
-                let callBack = callBackList[responseId] {
-                callBack(message.content)
-            } else if let name = message.name,
-                let eventHanlders = eventList[name] {
+    func fromWebToClient(info: [String:Any]) {
+        let message = STMessage(data: info)
+        if let responseId = message.responseId,
+            let callBack = callBackList[responseId] {
+            callBack(message.content,message.error)
+        } else if let name = message.name {
+            if let eventHanlders = eventList[name] {
                 eventHanlders.forEach { (handler) in
-                    handler(message.content) { content in
-                        self.responseToMessage(message: message, content: content)
+                    handler(message.content) { content, error in
+                        self.responseToMessage(messageId: message.requestId, content: content, error: error)
                     }
                 }
-            } else if let messageEventHandler = noneNameEventHandler {
-                messageEventHandler(message.content) { content in
-                    self.responseToMessage(message: message, content: content)
-                }
+            }
+        } else if let messageEventHandler = noneNameEventHandler {
+            messageEventHandler(message.content) { content, error in
+                self.responseToMessage(messageId: message.requestId, content: content, error: error)
             }
         }
     }
+
     
     
     /// 对消息的结果响应
@@ -113,10 +105,11 @@ class STMessageManager:NSObject {
     /// - Parameters:
     ///   - message: 响应的消息
     ///   - content: 内容
-    func responseToMessage(message:STMessage,content:Any?) {
+    func responseToMessage(messageId: Int,content: Any?,error: STError?) {
         let responseMessage = STMessage()
-        responseMessage.responseId = message.requestId
+        responseMessage.responseId = messageId
         responseMessage.content = content
+        responseMessage.error = error
         sendMessage(message: responseMessage)
     }
     
@@ -126,7 +119,7 @@ class STMessageManager:NSObject {
     /// - Parameters:
     ///   - name: 事件名
     ///   - handler: 回调处理
-    func addEventListener(name:String? ,handler:@escaping MessageCallBack) {
+    func addEventListener(name: String? ,handler: @escaping MessageCallBack) {
         if let name = name {
             if var events = self.eventList[name] {
                 events.append(handler)
@@ -142,14 +135,29 @@ class STMessageManager:NSObject {
     /// 发送消息到 Web
     ///
     /// - Parameter message: 消息内容
-    func sendMessage(message:STMessage) -> Void {
+    func sendMessage(message: STMessage) -> Void {
         
-        if let jsContext = jsContext ,
-            let JSString = message.JSString{
-            jsContext.evaluateScript( "\(kWebMessageSendFuncKey)(\(JSString))")
-        } else if let wkwebview = wkwebview,
+        if let wkwebview = wkwebview,
             let JSString = message.JSString {
             wkwebview.evaluateJavaScript( "\(kWebMessageSendFuncKey)(\(JSString))", completionHandler: nil)
         }
+    }
+    
+    
+    
+    private func injectJSForWKWebView() {
+        
+        let handlerName = self.delegate.scriptMessageHandlerName ?? ""
+        
+        // do inject
+        if var injectJS = self.delegate.injectJS() {
+            if let range = injectJS.range(of: "###replace_message_key###") {
+                injectJS.replaceSubrange(range, with: handlerName)
+            }
+            let userScript = WKUserScript(source: injectJS, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+            self.wkwebview?.configuration.userContentController.addUserScript(userScript)
+        }
+        
+        self.wkwebview?.configuration.userContentController.add(self.delegate, name: handlerName)
     }
 }

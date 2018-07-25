@@ -2,21 +2,40 @@
 //  STMessage.swift
 //  STJSBridge
 //
-//  Created by Duran on 2018/4/23.
-//  Copyright © 2018年 Maple.im. All rights reserved.
+//  Created by Maple Yin on 04/23/2018.
+//  Copyright (c) 2018 Duran. All rights reserved.
 //
 
 import Foundation
 
-class STMessage {
-    var requestId:Int = 0
-    var responseId:Int?
-    var name:String?
-    var content:Any?
+public struct STError {
+    var code: Int
+    var message: String
     
-    init(data:[String:Any]? = nil) {
+    public init(code: Int, message: String) {
+        self.code = code
+        self.message = message
+    }
+    
+    func json() -> [String:Any] {
+        return [
+            "code": code,
+            "message": message
+        ];
+    }
+}
+
+
+class STMessage {
+    var requestId: Int = 0
+    var responseId: Int?
+    var name: String?
+    var content: Any?
+    var error: STError?
+    
+    init(data: [String:Any]? = nil) {
         if let data = data {
-            responseId = data["responseId"] as? Int;
+            responseId = data["responseId"] as? Int
             if let name = data["name"] as? String {
                 self.name = name;
             }
@@ -27,14 +46,15 @@ class STMessage {
         }
     }
     
-    var JSString:String? {
-        var info:[String:Any] = [:]
+    var JSString: String? {
+        var info: [String:Any] = [:]
         info["requestId"] = requestId
         info["responseId"] = responseId
         info["name"] = name
         info["content"] = content
+        info["error"] = error?.json()
         
-        if let data = try? JSONSerialization.data(withJSONObject: info, options: .init(rawValue: 0)) {
+        if let data = try? JSONSerialization.data(withJSONObject: info, options: []) {
             return String(data: data, encoding: .utf8)
         } else {
             return nil
